@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import mutations from './mutations'
 import actions from './actions'
+import getters from './getters'
 
 Vue.use(Vuex)
 
@@ -37,11 +38,7 @@ const store = new Vuex.Store({
   },
   mutations,
   actions,
-  getters: {
-    teamName: (state, getters) => (id: number) => {
-      return state.currentMatch.teams[id].name
-    }
-  }
+  getters
 })
 
 export default store
