@@ -26,7 +26,6 @@ const mutations = {
   },
 
   [stopwatch.FINISH] (state: any) {
-
   },
 
   updateMode (state: any, value: string) {
@@ -47,14 +46,22 @@ const mutations = {
     state.currentMatch.stopwatch.fullTime = value
   },
 
-  updateTeam (state: any, value: any) {
+  updateTeam (state: any, value: { team: number, name?: string, shorthand?: string}) {
     if (value.name) state.currentMatch.teams[value.team].name = value.name
     if (value.shorthand) state.currentMatch.teams[value.team].shorthand = value.shorthand
   },
 
-
   toggleToastShown (state: any) {
     state.appSettings.toastShown = !state.appSettings.toastShown
+  },
+
+  loadStateFromStorage(state: any, value: { currentMatch: object,
+                                            appSettings: object,
+                                            stopwatch: object
+                                          }) {
+    state.currentMatch = value.currentMatch
+    state.appSettings = value.appSettings
+    state.stopwatch = value.stopwatch
   }
 
 }

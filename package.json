@@ -7,7 +7,8 @@
     "clean": "node build/script.clean.js",
     "dev": "node build/script.dev.js",
     "build": "node build/script.build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "test": "./node_modules/ts-mocha/bin/ts-mocha -p ./test ./test/**/*.spec.ts"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
@@ -21,6 +22,8 @@
     "vuex": "^2.2.1"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/mocha": "^2.2.40",
     "@types/systemjs": "^0.20.2",
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.0.0",
@@ -29,6 +32,7 @@
     "babel-plugin-transform-runtime": "^6.0.0",
     "babel-preset-es2015": "^6.0.0",
     "babel-preset-stage-2": "^6.0.0",
+    "chai": "^3.5.0",
     "colors": "^1.1.2",
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.26.0",
@@ -47,6 +51,7 @@
     "html-webpack-plugin": "^2.8.1",
     "http-proxy-middleware": "^0.17.0",
     "json-loader": "^0.5.4",
+    "mocha": "^3.2.0",
     "opn": "^4.0.2",
     "postcss-loader": "^1.0.0",
     "progress-bar-webpack-plugin": "^1.9.0",
@@ -54,6 +59,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.1.1",
     "ts-loader": "^2.0.1",
+    "ts-mocha": "^1.0.3",
     "typescript": "^2.2.1",
     "url-loader": "^0.5.7",
     "vue-class-component": "^5.0.0",

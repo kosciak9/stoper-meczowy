@@ -18,8 +18,9 @@
         }
       },
       time: function () {
-        let time = this.$store.state.currentMatch.stopwatch.remainingTime
-        time = 2100 - time
+        let remainingTime = this.$store.state.currentMatch.stopwatch.remainingTime
+        let fullTime = this.$store.state.currentMatch.stopwatch.fullTime
+        let time = fullTime - remainingTime
         let minutes = Math.floor(time / 60)
         let seconds = time - minutes * 60
         if (minutes === 0) {

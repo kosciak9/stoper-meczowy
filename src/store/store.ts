@@ -30,9 +30,6 @@ const store = new Vuex.Store({
         fullTime: 2100
       }
     },
-    teamSettings: {
-
-    },
     appSettings: {
       trackingMode: 'simple',
       toastShown: false

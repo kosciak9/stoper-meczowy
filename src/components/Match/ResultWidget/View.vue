@@ -2,21 +2,15 @@
   <div class="result-view">
     <div class="score-view">
       <div class="score -first">
-        {{ result.teamOne.shorthand }} {{ result.teamOne.score }}
+        {{ result.teamOne.shorthand }} - {{ result.teamOne.score }}
       </div>
       <div class="time">
         {{ time }}
       </div>
       <div class="score -second">
-        {{ result.teamTwo.shorthand }} {{ result.teamTwo.score }}
+        {{ result.teamTwo.score }} - {{ result.teamTwo.shorthand }}
       </div>
     </div>
-    <!-- <span class="team">{{ result.teamOne.name }}</span>
-    <span class="score">{{ result.teamOne.score }} - {{ result.teamTwo.score }}</span>
-    <span class="team">{{ result.teamTwo.name }}</span>
-    <div class="time">
-      {{ result.time }}
-    </div> -->
   </div>
 </template>
 
@@ -33,7 +27,7 @@
   justify-content center
   align-items center
 
-  font-size 0.85rem
+  font-size 1.2em
   font-weight 700
   color white
 
@@ -42,7 +36,7 @@
   overflow hidden
   > .score
     text-align center
-    width 33.3%
+    width 35%
     padding 5px
     &.-first
       background-color #027be3
@@ -53,7 +47,7 @@
 
   > .time
     text-align center
-    width 33.3%
+    width 30%
     padding 5px
     color black
     border-bottom 3px solid rgb(157, 155, 154)
