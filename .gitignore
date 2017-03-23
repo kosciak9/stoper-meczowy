@@ -11,3 +11,4 @@ cordova/plugins
 thumbs.db
 !.gitkeep
 .idea
+test/e2e/specs/*.js
