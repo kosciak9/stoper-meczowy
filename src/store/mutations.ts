@@ -1,23 +1,34 @@
 import * as stopwatch from './stopwatch-actions'
 
+interface stopwatch {
+  currentMatch: {
+    stopwatch: {
+      remainingTime: number,
+      fullTime: number,
+      stopwatchRunning: boolean,
+      stopwatchToken: any
+    }
+  }
+}
+
 const mutations = {
-  [stopwatch.TICK] (state: any) {
+  [stopwatch.TICK] (state: stopwatch) {
     state.currentMatch.stopwatch.remainingTime--
   },
 
-  [stopwatch.START] (state: any, stopwatchToken: number) {
+  [stopwatch.START] (state: stopwatch, stopwatchToken: number) {
     state.currentMatch.stopwatch.stopwatchRunning = true
     state.currentMatch.stopwatch.stopwatchToken = stopwatchToken
   },
 
-  [stopwatch.STOP] (state: any) {
+  [stopwatch.STOP] (state: stopwatch) {
     clearInterval(state.currentMatch.stopwatch.stopwatchToken)
 
     state.currentMatch.stopwatch.stopwatchToken = null
     state.currentMatch.stopwatch.stopwatchRunning = false
   },
 
-  [stopwatch.RESET] (state: any) {
+  [stopwatch.RESET] (state: stopwatch) {
     clearInterval(state.currentMatch.stopwatch.stopwatchToken)
     state.currentMatch.stopwatch.stopwatchToken = null
     state.currentMatch.stopwatch.stopwatchRunning = false
@@ -25,7 +36,7 @@ const mutations = {
     state.currentMatch.stopwatch.remainingTime = fullTime
   },
 
-  [stopwatch.FINISH] (state: any) {
+  [stopwatch.FINISH] (state: stopwatch) {
   },
 
   updateMode (state: any, value: string) {
