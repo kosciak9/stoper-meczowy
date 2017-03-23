@@ -1,34 +1,51 @@
 import * as stopwatch from './stopwatch-actions'
 
 interface stopwatch {
-  currentMatch: {
-    stopwatch: {
-      remainingTime: number,
-      fullTime: number,
-      stopwatchRunning: boolean,
-      stopwatchToken: any
-    }
-  }
+  remainingTime: number,
+  fullTime: number,
+  stopwatchRunning: boolean,
+  stopwatchToken: any
+}
+
+interface appSettings {
+  trackingMode: string,
+  toastShown: boolean
+}
+
+interface team {
+  name: string,
+  shorthand: string,
+  score: number
+}
+
+interface currentMatch {
+  stopwatch: stopwatch,
+  teams: team[]
+}
+
+interface state {
+  currentMatch: currentMatch,
+  appSettings: appSettings
 }
 
 const mutations = {
-  [stopwatch.TICK] (state: stopwatch) {
+  [stopwatch.TICK] (state: state) {
     state.currentMatch.stopwatch.remainingTime--
   },
 
-  [stopwatch.START] (state: stopwatch, stopwatchToken: number) {
+  [stopwatch.START] (state: state, stopwatchToken: number) {
     state.currentMatch.stopwatch.stopwatchRunning = true
     state.currentMatch.stopwatch.stopwatchToken = stopwatchToken
   },
 
-  [stopwatch.STOP] (state: stopwatch) {
+  [stopwatch.STOP] (state: state) {
     clearInterval(state.currentMatch.stopwatch.stopwatchToken)
 
     state.currentMatch.stopwatch.stopwatchToken = null
     state.currentMatch.stopwatch.stopwatchRunning = false
   },
 
-  [stopwatch.RESET] (state: stopwatch) {
+  [stopwatch.RESET] (state: state) {
     clearInterval(state.currentMatch.stopwatch.stopwatchToken)
     state.currentMatch.stopwatch.stopwatchToken = null
     state.currentMatch.stopwatch.stopwatchRunning = false
@@ -36,43 +53,43 @@ const mutations = {
     state.currentMatch.stopwatch.remainingTime = fullTime
   },
 
-  [stopwatch.FINISH] (state: stopwatch) {
+  [stopwatch.FINISH] (state: state) {
+    console.log(state)
   },
 
-  updateMode (state: any, value: string) {
+  updateMode (state: state, value: string) {
     state.appSettings.trackingMode = value
   },
 
-  incrementScore (state: any, value: number) {
+  incrementScore (state: state, value: number) {
     state.currentMatch.teams[value].score++
   },
 
-  decrementScore (state: any, value: number) {
+  decrementScore (state: state, value: number) {
     if (state.currentMatch.teams[value].score > 0) {
       state.currentMatch.teams[value].score--
     }
   },
 
-  updateTime (state: any, value: number) {
+  updateTime (state: state, value: number) {
     state.currentMatch.stopwatch.fullTime = value
   },
 
-  updateTeam (state: any, value: { team: number, name?: string, shorthand?: string}) {
+  updateTeam (state: state, value: { team: number, name?: string, shorthand?: string}) {
     if (value.name) state.currentMatch.teams[value.team].name = value.name
     if (value.shorthand) state.currentMatch.teams[value.team].shorthand = value.shorthand
   },
 
-  toggleToastShown (state: any) {
+  toggleToastShown (state: state) {
     state.appSettings.toastShown = !state.appSettings.toastShown
   },
 
-  loadStateFromStorage(state: any, value: { currentMatch: object,
-                                            appSettings: object,
-                                            stopwatch: object
-                                          }) {
+  loadStateFromStorage(state: state,
+                       value: {
+                         currentMatch: currentMatch,
+                         appSettings: appSettings }) {
     state.currentMatch = value.currentMatch
     state.appSettings = value.appSettings
-    state.stopwatch = value.stopwatch
   }
 
 }
