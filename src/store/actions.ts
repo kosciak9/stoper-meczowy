@@ -1,4 +1,4 @@
-import * as stopwatch from './stopwatch-actions'
+import * as stopwatch from './stopwatch.actions'
 
 const actions = {
   start: ({ commit, state }: { commit: any, state: any }) => {

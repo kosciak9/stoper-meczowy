@@ -10,6 +10,10 @@
   version "2.2.40"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.40.tgz#9811dd800ece544cd84b5b859917bf584a150c4c"
 
+"@types/node@^7.0.10":
+  version "7.0.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.10.tgz#d860abb18c1b58b552c7c6cd8b2ba7adf6546fa3"
+
 "@types/systemjs@^0.20.2":
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/@types/systemjs/-/systemjs-0.20.2.tgz#52c5289a2834781660bc66e796bac6e05b7b048a"

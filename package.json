@@ -8,7 +8,7 @@
     "dev": "node build/script.dev.js",
     "build": "node build/script.build.js",
     "lint": "eslint --ext .js,.vue src",
-    "test": "./node_modules/ts-mocha/bin/ts-mocha -p ./test ./test/**/*.spec.ts"
+    "unit": "./node_modules/ts-mocha/bin/ts-mocha -p ./test/unit ./test/unit/**/*.spec.ts"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/chai": "^3.4.35",
     "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.10",
     "@types/systemjs": "^0.20.2",
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.0.0",

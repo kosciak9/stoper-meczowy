@@ -65,7 +65,7 @@
       return this.$store.state.currentMatch.stopwatch.fullTime / 60
     }
     setFullTime (val: number) {
-      this.$store.commit('updateTime', val * 60)
+      this.$store.commit('updateFullTime', val * 60)
     }
 
     get firstTeam () {

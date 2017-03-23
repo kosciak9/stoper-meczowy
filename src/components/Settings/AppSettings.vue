@@ -31,7 +31,7 @@
     }
 
     set (val: string) {
-      this.$store.commit('updateMode', val)
+      this.$store.commit('updateTrackingMode', val)
     }
   }
 </script>
