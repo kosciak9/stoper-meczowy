@@ -30,6 +30,19 @@
   </div>
 </template>
 
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+
+  @Component({
+    props: {
+      events: []
+    }
+  })
+  export default class TimelineView extends Vue {
+  }
+</script>
+
 <script>
   export default {
     props: ['events']

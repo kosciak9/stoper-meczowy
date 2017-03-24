@@ -6,20 +6,22 @@
   </buttons>
 </template>
 
-<script>
-import Buttons from './View.vue'
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import Buttons from './View.vue'
 
-export default {
-  components: {
-    Buttons
-  },
-  computed: {
-    teamOneName: function () {
+  @Component({
+    components: {
+      Buttons
+    }
+  })
+  export default class ButtonsContainer extends Vue {
+    get teamOneName() {
       return this.$store.getters.teamName(0)
-    },
-    teamTwoName: function () {
+    }
+    get teamTwoName() {
       return this.$store.getters.teamName(1)
     }
   }
-}
 </script>

@@ -2,27 +2,16 @@
   <result></result>
 </template>
 
-<script>
-import Result from './ResultWidget/Container'
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import Result from './ResultWidget/Container.vue'
 
-export default {
-  data () {
-    return {
+  @Component({
+    components: {
+      Result
     }
-  },
-  computed: {
-  },
-  components: {
-    Result
-  },
-  methods: {
-  },
-  mounted () {
-  },
-  beforeDestroy () {
+  })
+  export default class AdvancedView extends Vue {
   }
-}
 </script>
-
-<style lang="styl">
-</style>

@@ -50,32 +50,37 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: ['teamOneName', 'teamTwoName'],
-  computed: {
-    stopwatchRunning: function () {
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+
+  @Component({
+    props: {
+      teamOneName: String,
+      teamTwoName: String
+    }
+  })
+  export default class  extends Vue {
+    get stopwatchRunning() {
       return this.$store.state.currentMatch.stopwatch.stopwatchRunning
     }
-  },
-  methods: {
-    start: function () {
+
+    start() {
       this.$store.dispatch('start')
-    },
-    stop: function () {
+    }
+    stop() {
       this.$store.dispatch('stop')
-    },
-    reset: function () {
+    }
+    reset() {
       this.$store.dispatch('reset')
-    },
-    incrementScore: function (value) {
-      this.$store.commit('incrementScore', value)
-    },
-    decrementScore: function (value) {
-      this.$store.commit('decrementScore', value)
+    }
+    incrementScore(team: Number) {
+      this.$store.commit('incrementScore', team)
+    }
+    decrementScore(team: Number) {
+      this.$store.commit('decrementScore', team)
     }
   }
-}
 </script>
 
 <style lang="stylus" scoped>

@@ -4,11 +4,18 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
   import TimelineView from './View'
-  export default {
-    computed: {
-      events: function () {
+
+  @Component({
+    components: {
+      TimelineView
+    }
+  })
+  export default class TimelineContainer extends Vue {
+      get events() {
         let timeline = this.$store.state.currentMatch.timeline
         return timeline.map(el => {
           el.icon = 'alarm'
@@ -16,9 +23,5 @@
           return el
         })
       }
-    },
-    components: {
-      TimelineView
-    }
   }
 </script>

@@ -14,9 +14,28 @@
   </div>
 </template>
 
-<script>
-  export default {
-    props: ['result', 'time']
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+
+  @Component({
+    props: {
+      result: {
+        teamOne: {
+          name: String,
+          shorthand: String,
+          score: Number
+        },
+        teamTwo: {
+          name: String,
+          shorthand: String,
+          score: Number
+        }
+      },
+      time: String
+    }
+  })
+  export default class ResultView extends Vue {
   }
 </script>
 
