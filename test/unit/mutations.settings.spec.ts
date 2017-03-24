@@ -8,7 +8,7 @@ const { incrementScore,
         updateTrackingMode,
         updateFullTime,
         updateTeam,
-        toggleToastShown } = mutations
+        toggleSettingsToastShown } = mutations
 
 describe('currentMatch and appSettings mutations, without stopwatch', () => {
   it('incrementScore of both teams', () => {
@@ -70,13 +70,13 @@ describe('currentMatch and appSettings mutations, without stopwatch', () => {
   })
   it('toggleToastShown', () => {
     const state = generateState()
-    let status = state.appSettings.toastShown
-    toggleToastShown(state)
+    let status = state.appSettings.settingsToastShown
+    toggleSettingsToastShown(state)
     if (status) {
-      expect(state.appSettings.toastShown).to.be.false
+      expect(state.appSettings.settingsToastShown).to.be.false
     }
     else {
-      expect(state.appSettings.toastShown).to.be.true
+      expect(state.appSettings.settingsToastShown).to.be.true
     }
   })
 })

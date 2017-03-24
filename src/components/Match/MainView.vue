@@ -7,32 +7,31 @@
   </div>
 </template>
 
-<script>
-import Simple from './SimpleView'
-import Advanced from './AdvancedView'
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import Simple from './SimpleView.vue'
+  import Advanced from './AdvancedView.vue'
+  import { Toast } from 'quasar'
 
-export default {
-  data () {
-    return {
+  @Component({
+    components: {
+      Simple,
+      Advanced
     }
-  },
-  computed: {
-    mode: function () {
+  })
+  export default class MainView extends Vue {
+    get mode() {
       return this.$store.state.appSettings.trackingMode
     }
-  },
-  components: {
-    Simple,
-    Advanced
-  },
-  methods: {
-  },
-  mounted () {
-  },
-  beforeDestroy () {
-  }
-}
-</script>
 
-<style lang="styl">
-</style>
+    mounted() {
+      if (!this.$store.state.appSettings.matchToastShown)
+        Toast.create.positive({
+          html: 'Press and hold the buttons to access additional options',
+          timeout: 10000
+        })
+        this.$store.commit('toggleMatchToastShown')
+    }
+  }
+</script>

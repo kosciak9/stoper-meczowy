@@ -71,9 +71,15 @@ const mutations = {
     }
   },
 
-  toggleToastShown (state: state) {
+  toggleSettingsToastShown (state: state) {
     if (state.appSettings) {
-      state.appSettings.toastShown = !state.appSettings.toastShown
+      state.appSettings.settingsToastShown = !state.appSettings.settingsToastShown
+    }
+  },
+
+  toggleMatchToastShown (state: state) {
+    if (state.appSettings) {
+      state.appSettings.matchToastShown = !state.appSettings.matchToastShown
     }
   },
 

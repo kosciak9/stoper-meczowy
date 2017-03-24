@@ -1,6 +1,7 @@
 const state = {
   appSettings: {
-    toastShown: false,
+    settingsToastShown: false,
+    matchToastShown: false,
     trackingMode: 'simple'
   },
   currentMatch: {

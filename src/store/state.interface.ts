@@ -7,7 +7,8 @@ export interface stopwatch {
 
 export interface appSettings {
   trackingMode?: string,
-  toastShown?: boolean
+  settingsToastShown?: boolean,
+  matchToastShown?: boolean
 }
 
 export interface team {
