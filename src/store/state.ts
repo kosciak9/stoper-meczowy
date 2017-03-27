@@ -19,7 +19,9 @@ const state = {
     ],
     stopwatch: {
       fullTime: 2100,
-      remainingTime: 2100
+      remainingTime: 2100,
+      stopwatchRunning: false,
+      stopwatchToken: null
     }
   }
 }

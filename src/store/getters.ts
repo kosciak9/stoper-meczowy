@@ -39,8 +39,11 @@ const getters = {
     let remainingTime = state.currentMatch.stopwatch.remainingTime
     let fullTime = state.currentMatch.stopwatch.fullTime
     return fullTime === remainingTime
-  }
+  },
 
+  isStopwatchRunning: (state: state) => {
+    return state.currentMatch.stopwatch.stopwatchRunning
+  }
 }
 
 export default getters

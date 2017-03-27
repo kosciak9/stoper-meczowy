@@ -6,12 +6,14 @@
     <button @click="incrementScore(1)" class="secondary push full-width">
       {{ teamTwoName }} scored
     </button>
-    <button v-if="stopwatchRunning" @click="stop" class="warning push full-width">
+    <button v-if="isStopwatchRunning" @click="stop" class="warning push full-width">
       Pause the time
     </button>
     <button v-else @click="start" class="warning push full-width">
       Start the time
     </button>
+
+    <div><h4>isStopwatchRunning: {{ isStopwatchRunning }}</h4></div>
 
     <q-context-menu ref="context">
       <div
@@ -57,14 +59,11 @@
   @Component({
     props: {
       teamOneName: String,
-      teamTwoName: String
+      teamTwoName: String,
+      isStopwatchRunning: Boolean
     }
   })
-  export default class  extends Vue {
-    get stopwatchRunning() {
-      return this.$store.state.currentMatch.stopwatch.stopwatchRunning
-    }
-
+  export default class ButtonsView extends Vue {
     start() {
       this.$store.dispatch('start')
     }

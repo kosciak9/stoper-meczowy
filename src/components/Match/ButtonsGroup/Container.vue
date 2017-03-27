@@ -2,6 +2,7 @@
   <buttons
     :teamOneName="teamOneName"
     :teamTwoName="teamTwoName"
+    :isStopwatchRunning="isStopwatchRunning"
   >
   </buttons>
 </template>
@@ -22,6 +23,9 @@
     }
     get teamTwoName() {
       return this.$store.getters.teamName(1)
+    }
+    get isStopwatchRunning() {
+      return this.$store.getters.isStopwatchRunning
     }
   }
 </script>
