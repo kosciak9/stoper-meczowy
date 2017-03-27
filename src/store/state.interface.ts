@@ -6,14 +6,14 @@ export interface stopwatch {
 }
 
 export interface appSettings {
-  trackingMode?: string,
-  settingsToastShown?: boolean,
-  matchToastShown?: boolean
+  trackingMode: string,
+  settingsToastShown: boolean,
+  matchToastShown: boolean
 }
 
 export interface team {
-  name?: string,
-  shorthand?: string,
+  name: string,
+  shorthand: string,
   score: number
 }
 

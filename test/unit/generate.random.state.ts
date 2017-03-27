@@ -40,7 +40,8 @@ function generateState() {
     },
     appSettings: {
       trackingMode: Boolean(randomInteger(5) > randomInteger(5)) ? 'simple' : 'advanced',
-      settingsToastShown: Boolean(randomInteger(5) > randomInteger(5))
+      settingsToastShown: Boolean(randomInteger(5) > randomInteger(5)),
+      matchToastShown: Boolean(randomInteger(5) > randomInteger(5))
     }
   }
   return randomValues

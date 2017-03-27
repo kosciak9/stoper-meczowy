@@ -8,9 +8,10 @@
     "dev": "node build/script.dev.js",
     "build": "node build/script.build.js",
     "lint": "eslint --ext .js,.vue src",
-    "unit": "./node_modules/ts-mocha/bin/ts-mocha -p ./test/unit ./test/unit/**/*.spec.ts",
+    "unit": "./node_modules/ts-mocha/bin/ts-mocha -p ./test/unit ./test/unit/*.spec.ts",
     "e2e": "tsc ./test/e2e/specs/*.ts && yarn run build && ./node_modules/.bin/wdio wdio.conf.js",
-    "test": "yarn run unit && yarn run e2e"
+    "test": "yarn run unit && yarn run e2e",
+    "coverage": "./node_modules/.bin/nyc yarn run unit"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
@@ -56,6 +57,7 @@
     "http-proxy-middleware": "^0.17.0",
     "json-loader": "^0.5.4",
     "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
     "opn": "^4.0.2",
     "postcss-loader": "^1.0.0",
     "progress-bar-webpack-plugin": "^1.9.0",
@@ -79,5 +81,22 @@
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.17.0",
     "webpack-merge": "^4.0.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".vue"
+    ],
+    "exclude": [
+      "node_modules",
+      "cordova"
+    ],
+    "include": [
+      "src/"
+    ],
+    "reporter": [
+      "html",
+      "text-summary"
+    ]
   }
 }

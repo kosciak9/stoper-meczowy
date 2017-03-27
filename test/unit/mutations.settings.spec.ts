@@ -8,7 +8,9 @@ const { incrementScore,
         updateTrackingMode,
         updateFullTime,
         updateTeam,
-        toggleSettingsToastShown } = mutations
+        toggleSettingsToastShown,
+        toggleMatchToastShown,
+        loadStateFromStorage } = mutations
 
 describe('currentMatch and appSettings mutations, without stopwatch', () => {
   it('incrementScore of both teams', () => {
@@ -20,6 +22,7 @@ describe('currentMatch and appSettings mutations, without stopwatch', () => {
     incrementScore(state, 1)
     expect(state.currentMatch.teams[1].score).to.equal(currentTeam1Score + 1)
   })
+
   it('decrementScore of both teams', () => {
     let state = generateState()
     let currentTeam0Score = state.currentMatch.teams[0].score
@@ -36,6 +39,7 @@ describe('currentMatch and appSettings mutations, without stopwatch', () => {
     expect(state.currentMatch.teams[0].score).to.equal(0)
     expect(state.currentMatch.teams[1].score).to.equal(0)
   })
+
   it('updateTrackingMode', () => {
     const state = generateState()
     // simple mode
@@ -45,11 +49,13 @@ describe('currentMatch and appSettings mutations, without stopwatch', () => {
     updateTrackingMode(state, 'simple')
     expect(state.appSettings.trackingMode).to.equal('simple')
   })
+
   it('updateFullTime', () => {
     const state = generateState()
     updateFullTime(state, 2100)
     expect(state.currentMatch.stopwatch.fullTime).to.equal(2100)
   })
+
   it('updateTeam', () => {
     const state = generateState()
     // updating only full name
@@ -68,7 +74,8 @@ describe('currentMatch and appSettings mutations, without stopwatch', () => {
     expect(state.currentMatch.teams[0].name).to.equal('Kraków Coast')
     expect(state.currentMatch.teams[0].shorthand).to.equal('KRK')
   })
-  it('toggleToastShown', () => {
+
+  it('toggleSettingsToastShown', () => {
     const state = generateState()
     let status = state.appSettings.settingsToastShown
     toggleSettingsToastShown(state)
@@ -78,5 +85,50 @@ describe('currentMatch and appSettings mutations, without stopwatch', () => {
     else {
       expect(state.appSettings.settingsToastShown).to.be.true
     }
+  })
+  it('toggleSettingsToastShown', () => {
+    const state = generateState()
+    let status = state.appSettings.matchToastShown
+    toggleMatchToastShown(state)
+    if (status) {
+      expect(state.appSettings.matchToastShown).to.be.false
+    }
+    else {
+      expect(state.appSettings.matchToastShown).to.be.true
+    }
+  })
+
+  it('load state from the Local Storage', () => {
+    const state = generateState()
+    const mock = {
+      currentMatch: {
+        stopwatch: {
+          remainingTime: 2100,
+          fullTime: 2100,
+          stopwatchRunning: false,
+          stopwatchToken: null
+        },
+        teams: [
+          {
+            name: 'KS Styropian',
+            shorthand: 'KSS',
+            score: 3
+          },
+          {
+            name: 'Kraków Coast',
+            shorthand: 'KRK',
+            score: 2
+          }
+        ]
+      },
+      appSettings: {
+        trackingMode: 'simple',
+        settingsToastShown: true,
+        matchToastShown: false
+      }
+    }
+    loadStateFromStorage(state, mock)
+    expect(state.appSettings).to.equal(mock.appSettings)
+    expect(state.currentMatch).to.equal(mock.currentMatch)
   })
 })

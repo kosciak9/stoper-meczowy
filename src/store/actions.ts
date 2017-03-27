@@ -1,20 +1,18 @@
-import * as stopwatch from './stopwatch.actions'
-
 const actions = {
   start: ({ commit, state }: { commit: any, state: any }) => {
     let interval = setInterval(() => {
       if (state.currentMatch.stopwatch.remainingTime > 0) {
-        commit(stopwatch.TICK)
+        commit('tickStopwatch')
       }
       else {
-        commit(stopwatch.STOP)
+        commit('stopStopwatch')
       }
     }, 1000)
 
-    commit(stopwatch.START, interval)
+    commit('startStopwatch', interval)
   },
-  stop: ({ commit }: { commit: any, state: any }) => commit(stopwatch.STOP),
-  reset: ({ commit }: { commit: any, state: any }) => commit(stopwatch.RESET)
+  stop: ({ commit }: { commit: any, state: any }) => commit('stopStopwatch'),
+  reset: ({ commit }: { commit: any, state: any }) => commit('resetStopwatch')
 }
 
 export default actions
