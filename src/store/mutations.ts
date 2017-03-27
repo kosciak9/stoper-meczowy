@@ -66,6 +66,8 @@ const mutations = {
                          appSettings: appSettings }) {
     state.currentMatch = value.currentMatch
     state.appSettings = value.appSettings
+    state.appSettings.matchToastShown = true
+    state.appSettings.settingsToastShown = true
   }
 
 }

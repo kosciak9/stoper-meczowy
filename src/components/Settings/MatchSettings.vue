@@ -109,7 +109,7 @@
       this.$store.commit('updateTeam', {team: 1, shorthand: val.target.value})
     }
 
-    created () {
+    mounted () {
       if (!this.$store.state.appSettings.settingsToastShown) {
         Toast.create.info({
           html: 'Fill all details and procced to the match!',

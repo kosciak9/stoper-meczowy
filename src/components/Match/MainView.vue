@@ -26,12 +26,13 @@
     }
 
     mounted() {
-      if (!this.$store.state.appSettings.matchToastShown)
+      if (!this.$store.state.appSettings.matchToastShown) {
         Toast.create.positive({
           html: 'Press and hold the buttons to access additional options',
           timeout: 10000
         })
         this.$store.commit('toggleMatchToastShown')
+      }
     }
   }
 </script>
