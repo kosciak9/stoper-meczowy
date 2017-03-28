@@ -13,7 +13,39 @@
       Start the time
     </button>
 
-    <div><h4>isStopwatchRunning: {{ isStopwatchRunning }}</h4></div>
+    <transition name="fade">
+      <div class="extratime-buttons" v-if="lessThanMinuteToFinish">
+        <button @click="addExtraTime(1)" class="negative push full-width">
+          1 minute extra time
+        </button>
+        <button @click="addExtraTime(3)" class="negative push full-width">
+          3 minute extra time
+        </button>
+        <button @click="$refs.extraTimeModal.open()" class="negative push full-width">
+          Custom amount of extra time
+        </button>
+      </div>
+    </transition>
+
+    <q-modal ref="extraTimeModal"
+      class="minimized"
+      :content-css="{ padding: '25px', textAlign: 'center' }">
+      <h6>Extra Time</h6>
+      <div class="padding">
+        <q-knob
+          v-model="extraTime"
+          :min="1"
+          :max="10"
+        ></q-knob>
+      </div>
+      <button class="primary"
+        @click="addExtraTime(extraTime)">
+        Add
+      </button>
+      <button class="secondary" @click="$refs.extraTimeModal.close()">
+        Close
+      </button>
+    </q-modal>
 
     <q-context-menu ref="context">
       <div
@@ -60,10 +92,13 @@
     props: {
       teamOneName: String,
       teamTwoName: String,
-      isStopwatchRunning: Boolean
+      isStopwatchRunning: Boolean,
+      lessThanMinuteToFinish: Boolean
     }
   })
   export default class ButtonsView extends Vue {
+    extraTime = 1
+
     start() {
       this.$store.dispatch('start')
     }
@@ -72,6 +107,11 @@
     }
     reset() {
       this.$store.dispatch('reset')
+    }
+    addExtraTime(minutes: number) {
+      this.$store.commit('addExtraTime', minutes * 60)
+      const hello: any = this.$refs.extraTimeModal
+      hello.close()
     }
     incrementScore(team: Number) {
       this.$store.commit('incrementScore', team)
@@ -83,7 +123,9 @@
 </script>
 
 <style lang="stylus" scoped>
-.buttons-group
+.buttons-group, .extratime-buttons
   > .push
     margin 5px
+.padding
+  padding 10px
 </style>

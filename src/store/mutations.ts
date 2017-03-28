@@ -2,7 +2,7 @@ import { state, appSettings, currentMatch } from './state.interface'
 
 const mutations = {
   tickStopwatch (state: state) {
-    state.currentMatch.stopwatch.remainingTime--
+    state.currentMatch.stopwatch.remainingTime -= 1
   },
 
   startStopwatch (state: state, stopwatchToken: number) {
@@ -44,6 +44,10 @@ const mutations = {
 
   updateFullTime (state: state, value: number) {
     state.currentMatch.stopwatch.fullTime = value
+  },
+
+  addExtraTime (state:state, value: number) {
+    state.currentMatch.stopwatch.remainingTime += value
   },
 
   updateTeam (state: state, value: { team: number, name?: string, shorthand?: string}) {

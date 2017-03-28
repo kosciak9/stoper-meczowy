@@ -4,7 +4,7 @@
       <div class="score -first">
         {{ result.teamOne.shorthand }} - {{ result.teamOne.score }}
       </div>
-      <div class="time">
+      <div class="time" :style="backgroundColor">
         {{ time }}
       </div>
       <div class="score -second">
@@ -20,6 +20,7 @@
 
   @Component({
     props: {
+      lessThanMinuteToFinish: Boolean,
       result: {
         teamOne: {
           name: String,
@@ -36,6 +37,24 @@
     }
   })
   export default class ResultView extends Vue {
+    lessThanMinuteToFinish: Boolean
+
+    get backgroundColor() {
+      if (this.lessThanMinuteToFinish) {
+        return {
+          "background-color": '#ff0000',
+          "border-bottom": "3px solid #bb0101",
+          "color": '#ffffff'
+        }
+      }
+      else {
+        return {
+          "background-color": '#ffffff',
+          "border-bottom": "3px solid rgb(157, 155, 154)",
+          "color": '#000000'
+        }
+      }
+    }
   }
 </script>
 
@@ -70,4 +89,5 @@
     padding 5px
     color black
     border-bottom 3px solid rgb(157, 155, 154)
+    transition 1s all
 </style>

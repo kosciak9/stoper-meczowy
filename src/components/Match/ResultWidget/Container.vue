@@ -2,7 +2,8 @@
   <div>
     <result-view
       :result="result"
-      :time="time">
+      :time="time"
+      :lessThanMinuteToFinish="lessThanMinuteToFinish">
     </result-view>
   </div>
 </template>
@@ -20,6 +21,9 @@
   export default class ResultContainer extends Vue {
     get time() {
       return this.$store.getters.currentTime
+    }
+    get lessThanMinuteToFinish() {
+      return this.$store.getters.lessThanMinuteToFinish
     }
     get result() {
       return {

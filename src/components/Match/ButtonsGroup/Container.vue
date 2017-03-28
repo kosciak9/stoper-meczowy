@@ -3,6 +3,7 @@
     :teamOneName="teamOneName"
     :teamTwoName="teamTwoName"
     :isStopwatchRunning="isStopwatchRunning"
+    :lessThanMinuteToFinish="lessThanMinuteToFinish"
   >
   </buttons>
 </template>
@@ -26,6 +27,9 @@
     }
     get isStopwatchRunning() {
       return this.$store.getters.isStopwatchRunning
+    }
+    get lessThanMinuteToFinish() {
+      return this.$store.getters.lessThanMinuteToFinish
     }
   }
 </script>

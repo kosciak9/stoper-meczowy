@@ -3,19 +3,12 @@
     <div class="list-label">Part length</div>
     <div class="item two-lines">
       <q-tooltip :disable="!stopwatchRunning" anchor="top middle" self="center middle">
-        <!-- <div class="list item-delimiter highlight"> -->
-          <!-- <div
-            class="item item-link"
-            @click="$refs.popover.close()"
-          > -->
-            Stop and reset the stopwatch to change match length!
-          <!-- </div> -->
-        <!-- </div> -->
+        Stop and reset the stopwatch to change match length!
       </q-tooltip>
       <div class="item-primary">{{ fullTime }}</div>
       <div class="item-content">
         <q-range v-model="fullTime"
-          :min="1" :max="50" @input="setFullTime" label
+          :min="15" :max="50" @input="setFullTime" label
           :disable="stopwatchRunning"
         >
         </q-range>
@@ -86,7 +79,7 @@
     }
     setFullTime (val: number) {
       this.$store.commit('updateFullTime', val * 60)
-      this.$store.commit('RESET')
+      this.$store.commit('resetStopwatch')
     }
 
     get firstTeam () {

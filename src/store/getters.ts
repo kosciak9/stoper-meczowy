@@ -43,6 +43,13 @@ const getters = {
 
   isStopwatchRunning: (state: state) => {
     return state.currentMatch.stopwatch.stopwatchRunning
+  },
+
+  lessThanMinuteToFinish: (state: state) => {
+    const stopwatch = state.currentMatch.stopwatch
+    const timeIsLessThanOneMinute = (stopwatch.remainingTime < 150)
+    const itsNotFinishYet = (stopwatch.remainingTime !== 0)
+    return (timeIsLessThanOneMinute && itsNotFinishYet)
   }
 }
 

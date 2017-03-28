@@ -35,7 +35,7 @@
   }
 </script>
 
-<style lang="styl" scoped>
+<style lang="styl">
 .fade-enter-active, .fade-leave-active
   transition opacity .2s
 
