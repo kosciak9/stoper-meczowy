@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Stoper z funkcją zapisywania wydarzeń meczu",
   "author": "Franciszek Madej",
+  "license": "GPL-3.0+",
   "scripts": {
     "clean": "node build/script.clean.js",
     "dev": "node build/script.dev.js",
