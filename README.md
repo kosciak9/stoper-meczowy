@@ -1,3 +1,5 @@
+![App icon](artwork/icon.png)
+
 # Giermek / Squire
 
 > Match Stopwatch / Stoper Meczowy
@@ -35,8 +37,8 @@ dostępna do pobrania z zakładki "Releases" na GitHubie.
 
 ## Screenshots / Zrzuty ekranu
 
-![Match View](match_view.png)
-![Settings View](settings_view.png)
+![Match View](artwork/match_view.png)
+![Settings View](artwork/settings_view.png)
 
 ## License / Licencja
 

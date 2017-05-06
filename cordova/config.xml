@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="pl.alergeek.giermek" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Giermek</name>
+    <name>Squire</name>
     <description>
       Prosty minutnik meczowy, z funkcją zapisywania wydarzeń meczu.
     </description>
@@ -18,6 +18,18 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="res/mipmap-hdpi/ic_launcher.png" density="hdpi" />
+        <icon src="res/mipmap-xhdpi/ic_launcher.png" density="xhdpi" />
+        <icon src="res/mipmap-xxhdpi/ic_launcher.png" density="xxhdpi" />
+        <icon src="res/mipmap-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
