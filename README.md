@@ -17,7 +17,7 @@ built-in. It was tested on Android phones, but should be easly portable to iOS.
 ***Polish***
 Razem ze znajomymi grywamy w amatorskiej lidze w ramach projektu
 [playarena.pl](playarena.pl). Czasami zdarzają się spotkania, gdzie wyniku nie
-da się policzyć na palcach, dlatego napisałem tą aplikację, która powinna pomóc
+da się policzyć na palcach, dlatego napisałem tę aplikację, która powinna pomóc
 w załatwieniu sprawy. Jest to prosty minutnik / stoper, z możliwością dodawania
 i odejmowania goli obydwu drużynom. Jako, że chciałem przetestować kilka nowych
 technologii, to wykorzystałem do jej budowy TypeScript, Quasar Framework oraz
